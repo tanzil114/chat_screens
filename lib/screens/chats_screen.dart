@@ -127,29 +127,12 @@ class _ChatsScreenState extends State<ChatsScreen> {
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
-                  child: Column(
-                    children: [
-                      ChatContainer(),
-                      Divider(),
-                      ChatContainer(),
-                      Divider(),
-                      ChatContainer(),
-                      Divider(),
-                      ChatContainer(),
-                      Divider(),
-                      ChatContainer(),
-                      Divider(),
-                      ChatContainer(),
-                      Divider(),
-                      ChatContainer(),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+                child: ListView.separated(
+                    itemBuilder: (context, index) {
+                      return ChatContainer();
+                    },
+                    separatorBuilder: (context, index) => Divider(),
+                    itemCount: 20)),
           ],
         ),
       ),
