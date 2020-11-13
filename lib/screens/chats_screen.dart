@@ -131,12 +131,15 @@ class _ChatsScreenState extends State<ChatsScreen> {
               ),
             ),
             Expanded(
-                child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      return ChatContainer();
-                    },
-                    separatorBuilder: (context, index) => Divider(),
-                    itemCount: 20)),
+                child: Container(
+              margin: EdgeInsets.symmetric(vertical: 8.0),
+              child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    return ChatContainer();
+                  },
+                  separatorBuilder: (context, index) => Divider(),
+                  itemCount: 20),
+            )),
           ],
         ),
       ),

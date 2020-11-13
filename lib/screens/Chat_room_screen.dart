@@ -11,16 +11,14 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
   List<Map> messages = [
     {
       'userId': 1,
-      // 'sentByCurrentUser': false,
       'text': 'Hi Ankur! What’s Up?',
       'datetime': 'Yesterday 14:26 PM',
       'isRead': true,
       'type': msgType.text,
-      'image': 'assets/icons/profile.png'
+      'image': 'assets/icons/profile-3.png'
     },
     {
       'userId': 2,
-      // 'sentByCurrentUser': true,
       'text':
           'Oh, hello! All perfectly fine I\'m just heading out for something',
       'datetime': 'Yesterday 14:38 PM',
@@ -30,32 +28,31 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
     },
     {
       'userId': 1,
-      // 'sentByCurrentUser': false,
       'text': null,
       'datetime': 'Yesterday 14:44 PM',
       'isRead': true,
       'type': msgType.audio,
-      'image': 'assets/icons/profile.png'
+      'image': 'assets/icons/profile-3.png'
     },
     {
       'userId': 2,
-      // 'sentByCurrentUser': false,
       'text': 'Yeah sure I\'ll be there this weekend with my brother',
       'datetime': 'Yesterday 14:50 PM',
       'isRead': false,
+      'type': msgType.text,
       'image': 'assets/icons/profile.png'
     },
     {
       'userId': 1,
-      // 'sentByCurrentUser': false,
       'text': 'Yes I Am So Happy :)',
       'datetime': 'Yesterday 14:26 PM',
       'isRead': true,
-      'image': 'assets/icons/profile.png'
+      'type': msgType.text,
+      'image': 'assets/icons/profile-3.png'
     }
   ];
 
-  int _currentUser = 1;
+  int _currentUser = 2;
   bool sentByCurrentUser = true;
   @override
   Widget build(BuildContext context) {
@@ -184,19 +181,51 @@ class MessageContainer extends StatelessWidget {
             ? CrossAxisAlignment.end
             : CrossAxisAlignment.start,
         children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: sentByCurrentUser ? Color(0xFF5879EE) : Color(0xFFEEF1FF),
-            ),
-            child: Text(
-              message['text'] ?? '',
-              style: TextStyle(
-                  color: sentByCurrentUser ? Colors.white : Colors.black),
-            ),
-          ),
+          message['type'] == msgType.text
+              ? Container(
+                  margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: sentByCurrentUser
+                        ? Color(0xFF5879EE)
+                        : Color(0xFFEEF1FF),
+                  ),
+                  child: Text(
+                    message['text'] ?? '',
+                    style: TextStyle(
+                        color: sentByCurrentUser ? Colors.white : Colors.black),
+                  ),
+                )
+              : Container(
+                  margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: sentByCurrentUser
+                        ? Color(0xFF5879EE)
+                        : Color(0xFFEEF1FF),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Image(
+                          image: AssetImage('assets/icons/icon-play.png'),
+                          height: 28,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      ),
+                      Flexible(
+                        child: Image(
+                          image: AssetImage('assets/icons/audio-track.png'),
+                          height: 45,
+                        ),
+                      ),
+                    ],
+                  )),
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
