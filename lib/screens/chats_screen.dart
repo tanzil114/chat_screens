@@ -1,3 +1,4 @@
+import 'package:chat_screens/screens/Chat_room_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChatsScreen extends StatefulWidget {
@@ -28,39 +29,42 @@ class _ChatsScreenState extends State<ChatsScreen> {
         centerTitle: true,
         elevation: 0,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: Colors.amber[400],
-        unselectedItemColor: Colors.grey,
-        onTap: _onTap,
-        items: [
-          BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(
-                    'assets/icons/Icon-material-chat_bubble_outline.png'),
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/Icon-feather-phone-call.png'),
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/Icon-feather-plus.png'),
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/Icon-feather-users.png'),
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/icons/Icon-feather-settings.png'),
-              ),
-              label: ''),
-        ],
+      bottomNavigationBar: Container(
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _currentIndex,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          onTap: _onTap,
+          items: [
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage(
+                      'assets/icons/Icon-material-chat_bubble_outline.png'),
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/Icon-feather-phone-call.png'),
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/Icon-feather-plus.png'),
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/Icon-feather-users.png'),
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/Icon-feather-settings.png'),
+                ),
+                label: ''),
+          ],
+        ),
       ),
       body: Container(
         child: Column(
@@ -163,28 +167,32 @@ class ChatContainer extends StatelessWidget {
               height: 55,
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Julian Dasilva',
-                style: TextStyle(
-                  color: Color(0xFF6180F2),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: Text(
-                  'Hi Julian! See you after work?',
+          GestureDetector(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChatRoomScreen())),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Julian Dasilva',
                   style: TextStyle(
-                    color: Color(0xFF828181),
-                    fontSize: 15,
+                    color: Color(0xFF6180F2),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: Text(
+                    'Hi Julian! See you after work?',
+                    style: TextStyle(
+                      color: Color(0xFF828181),
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Spacer(),
           Column(
