@@ -1,3 +1,4 @@
+import 'package:chat_screens/elements/rounded_asset_image.dart';
 import 'package:flutter/material.dart';
 
 enum msgType { text, image, audio, video }
@@ -66,7 +67,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
         child: Column(
           children: [
             Expanded(
@@ -90,8 +91,8 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                     Expanded(
                       child: Row(
                         children: [
-                          Image(
-                            image: AssetImage('assets/icons/icon-camera.png'),
+                          RoundedAssetImage(
+                            imagePath: 'assets/icons/icon-camera.png',
                             width: 25,
                             height: 25,
                           ),
@@ -111,8 +112,8 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                         ],
                       ),
                     ),
-                    Image(
-                      image: AssetImage('assets/icons/icon-send.png'),
+                    RoundedAssetImage(
+                      imagePath: 'assets/icons/icon-send.png',
                       width: 52,
                       height: 52,
                     ),
@@ -147,9 +148,8 @@ class MessageWithImage extends StatelessWidget {
                 sentByCurrentUser: sentByCurrentUser, message: message)
             : Container(),
         Container(
-          padding: EdgeInsets.only(right: 8.0),
-          child: Image(
-            image: AssetImage(message['image']),
+          child: RoundedAssetImage(
+            imagePath: message['image'],
             width: 35,
             height: 35,
           ),
@@ -254,8 +254,8 @@ class HeaderContainer extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(right: 8.0),
-            child: Image(
-              image: AssetImage('assets/icons/profile.png'),
+            child: RoundedAssetImage(
+              imagePath: 'assets/icons/profile.png',
               width: 42,
               height: 42,
             ),

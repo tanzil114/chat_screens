@@ -1,3 +1,4 @@
+import 'package:chat_screens/elements/rounded_asset_image.dart';
 import 'package:chat_screens/screens/Chat_room_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +16,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Image(
-              image: AssetImage('assets/icons/profile.png'),
-            ),
+            icon: RoundedAssetImage(
+                imagePath: 'assets/icons/profile.png', width: 35, height: 35),
           ),
         ],
         backgroundColor: Color(0xFF5879EE),
@@ -81,50 +81,35 @@ class _ChatsScreenState extends State<ChatsScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Image(
-                      image: AssetImage('assets/icons/search.png'),
-                      width: 55,
-                      height: 55,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: RoundedAssetImage(
+                          imagePath: 'assets/icons/profile.png'),
                     ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: RoundedAssetImage(
+                          imagePath: 'assets/icons/profile.png'),
                     ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: RoundedAssetImage(
+                          imagePath: 'assets/icons/profile.png'),
                     ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: RoundedAssetImage(
+                          imagePath: 'assets/icons/profile.png'),
                     ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: RoundedAssetImage(
+                          imagePath: 'assets/icons/profile.png'),
                     ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
-                    ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
-                    ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
-                    ),
-                    Image(
-                      image: AssetImage('assets/icons/profile.png'),
-                      width: 55,
-                      height: 55,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: RoundedAssetImage(
+                          imagePath: 'assets/icons/profile.png'),
                     ),
                   ],
                 ),
@@ -159,16 +144,12 @@ class ChatContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+      margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.only(right: 8.0),
-            child: Image(
-              image: AssetImage('assets/icons/profile.png'),
-              width: 55,
-              height: 55,
-            ),
+            padding: EdgeInsets.only(right: 16.0),
+            child: RoundedAssetImage(imagePath: 'assets/icons/profile.png'),
           ),
           GestureDetector(
             onTap: () => Navigator.push(context,
