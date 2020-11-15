@@ -21,3 +21,25 @@ class RoundedAssetImage extends StatelessWidget {
     );
   }
 }
+
+class RoundedNetworkImage extends StatelessWidget {
+  const RoundedNetworkImage(
+      {Key key, @required this.imageUrl, this.width = 55, this.height = 55})
+      : super(key: key);
+
+  final String imageUrl;
+  final double width;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Image(
+        image: NetworkImage(imageUrl),
+        width: width,
+        height: height,
+      ),
+    );
+  }
+}

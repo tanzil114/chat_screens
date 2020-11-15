@@ -16,7 +16,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
       'datetime': 'Yesterday 14:26 PM',
       'isRead': true,
       'type': msgType.text,
-      'image': 'assets/icons/profile-3.png'
+      'image': 'https://i.pravatar.cc/150?img=4'
     },
     {
       'userId': 2,
@@ -25,7 +25,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
       'datetime': 'Yesterday 14:38 PM',
       'isRead': true,
       'type': msgType.text,
-      'image': 'assets/icons/profile.png'
+      'image': 'https://i.pravatar.cc/150?img=12'
     },
     {
       'userId': 1,
@@ -33,7 +33,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
       'datetime': 'Yesterday 14:44 PM',
       'isRead': true,
       'type': msgType.audio,
-      'image': 'assets/icons/profile-3.png'
+      'image': 'https://i.pravatar.cc/150?img=4'
     },
     {
       'userId': 2,
@@ -41,7 +41,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
       'datetime': 'Yesterday 14:50 PM',
       'isRead': false,
       'type': msgType.text,
-      'image': 'assets/icons/profile.png'
+      'image': 'https://i.pravatar.cc/150?img=12'
     },
     {
       'userId': 1,
@@ -49,7 +49,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
       'datetime': 'Yesterday 14:26 PM',
       'isRead': true,
       'type': msgType.text,
-      'image': 'assets/icons/profile-3.png'
+      'image': 'https://i.pravatar.cc/150?img=4'
     }
   ];
 
@@ -58,29 +58,41 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF5879EE),
-        title: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 36),
-          child: HeaderContainer(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(36),
+              bottomRight: Radius.circular(36),
+            ),
+            color: Color(0xFF5879EE),
+          ),
+          padding: const EdgeInsets.only(top: 20.0, bottom: 30),
+          child: AppBar(
+            backgroundColor: Color(0xFF5879EE),
+            title: HeaderContainer(),
+            elevation: 0,
+          ),
         ),
-        elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
         child: Column(
           children: [
             Expanded(
-              child: ListView(
-                  children: messages
-                      .map((e) => MessageWithImage(
-                          sentByCurrentUser: _currentUser == e['userId'],
-                          message: e))
-                      .toList()),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ListView(
+                    children: messages
+                        .map((e) => MessageWithImage(
+                            sentByCurrentUser: _currentUser == e['userId'],
+                            message: e))
+                        .toList()),
+              ),
             ),
             Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                   color: Color(0xFFEEF1FF),
@@ -91,8 +103,8 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                     Expanded(
                       child: Row(
                         children: [
-                          RoundedAssetImage(
-                            imagePath: 'assets/icons/icon-camera.png',
+                          Image.asset(
+                            'assets/icons/icon-camera.png',
                             width: 25,
                             height: 25,
                           ),
@@ -148,8 +160,9 @@ class MessageWithImage extends StatelessWidget {
                 sentByCurrentUser: sentByCurrentUser, message: message)
             : Container(),
         Container(
-          child: RoundedAssetImage(
-            imagePath: message['image'],
+          padding: EdgeInsets.only(top: 8.0),
+          child: RoundedNetworkImage(
+            imageUrl: message['image'],
             width: 35,
             height: 35,
           ),
@@ -210,9 +223,13 @@ class MessageContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Flexible(
-                        child: Image(
-                          image: AssetImage('assets/icons/icon-play.png'),
-                          height: 28,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: RoundedAssetImage(
+                            imagePath: 'assets/icons/icon-play.png',
+                            height: 28,
+                            width: 28,
+                          ),
                         ),
                       ),
                       Container(
@@ -254,8 +271,8 @@ class HeaderContainer extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(right: 8.0),
-            child: RoundedAssetImage(
-              imagePath: 'assets/icons/profile.png',
+            child: RoundedNetworkImage(
+              imageUrl: 'https://i.pravatar.cc/150?img=4',
               width: 42,
               height: 42,
             ),
@@ -288,15 +305,21 @@ class HeaderContainer extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Image(
-            image: AssetImage('assets/icons/icon-voice-call.png'),
-            width: 42,
-            height: 42,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4.0),
+            child: Image(
+              image: AssetImage('assets/icons/icon-voice-call.png'),
+              width: 42,
+              height: 42,
+            ),
           ),
-          Image(
-            image: AssetImage('assets/icons/icon-video-call.png'),
-            width: 42,
-            height: 42,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4.0),
+            child: Image(
+              image: AssetImage('assets/icons/icon-video-call.png'),
+              width: 42,
+              height: 42,
+            ),
           ),
         ],
       ),
